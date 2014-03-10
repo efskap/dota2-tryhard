@@ -1,14 +1,14 @@
 <h4>Suggested Picks</h4>
-<table class="striped">
+<table class="striped sortable">
 <thead>
 {% for label in header %}
-<th>{{label}}</th>
+<th rel="{{loop.index-1}}">{{label}}</th>
 {% endfor %}
 </thead>
 {% for row in x %}
     <tr class="{{ loop.cycle('', 'alt') }}"> 
 	{% for col in row %}
-      <td>{{col}}</td>
+      <td value="{{col}}">{{col}}</td>
 	  {% endfor %}
     </tr>
 {% endfor %}

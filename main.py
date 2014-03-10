@@ -25,6 +25,8 @@ def compute():
     total_counters = {}
     for enemy_hero in enemy_heroes:
         total_counters = d_sum(total_counters, counters[enemy_hero])  # now add the advantages
+
+
     sorted_list = []
     for hero in sorted(total_counters, key=total_counters.get, reverse=True):
         if hero not in enemy_heroes:# can't pick a hero if enemy already picked him!
