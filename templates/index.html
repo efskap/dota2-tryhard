@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- META -->
+    <title>tryhard doto</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content=""/>
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="css/kickstart.css" media="all"/>
+    <link rel="stylesheet" type="text/css" href="css/style.css" media="all"/>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <!-- Javascript -->
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/kickstart.js"></script>
+    <script type="text/javascript" src="js/tryhard.js"></script>
+</head>
+<body>
+<div id="wrap">
+<div id="main" class="grid">
+    <div class="col_12 center" style="margin-top:25px;">
+
+        <h1>tryhard doto</h1>
+
+        <p>Suggests heroes that tend to do well against the enemy's picks. #roadto7k</p>
+
+<hr/>
+    </div>
+
+    <div class="col_3 center panel">
+        <h4>Enemy Picks</h4>
+
+        <form id='picks'>
+            <select id="hero1" name="heroes">{% include 'hero_options.html' %}</select> <br/>
+            <select id="hero2" name="heroes">{% include 'hero_options.html' %}</select> <br/>
+            <select id="hero3" name="heroes">{% include 'hero_options.html' %}</select> <br/>
+            <select id="hero4" name="heroes">{% include 'hero_options.html' %}</select> <br/>
+            <select id="hero5" name="heroes">{% include 'hero_options.html' %}</select> <br/>
+
+            <p>
+                <button class="large blue" id="submit">BANG BANG</button>
+        </form>
+    </div>
+    <div class="col_9 center panel" id="results">
+
+    </div>
+
+</div>
+<!-- End Grid -->
+</div>
+
+<div id="footer">
+    By <a href="https://github.com/efskap">Dmitry Narkevich</a> • Powered by <a href="http://dotabuff.com/">Dotabuff</a> • Frontend: <a href="http://www.99lime.com">HTML KickStart</a> • Backend: <a href="http://flask.pocoo.org/">Flask</a>
+</div>
+
+</body>
+</html>

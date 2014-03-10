@@ -1,0 +1,15 @@
+<h4>Suggested Picks</h4>
+<table class="striped">
+<thead>
+{% for label in header %}
+<th>{{label}}</th>
+{% endfor %}
+</thead>
+{% for row in x %}
+    <tr class="{{ loop.cycle('', 'alt') }}"> 
+	{% for col in row %}
+      <td>{{col}}</td>
+	  {% endfor %}
+    </tr>
+{% endfor %}
+</table>
