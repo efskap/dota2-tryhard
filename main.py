@@ -1,15 +1,9 @@
-"""`main` is the top level module for your Flask application."""
-
-# Import the Flask Framework
 from collections import defaultdict
 from flask import Flask, render_template, request
 from bs4 import BeautifulSoup
 from urllib2 import urlopen
 
 app = Flask(__name__)
-# Note: We don't need to call run() since our application is embedded within
-# the App Engine WSGI application server.
-
 
 @app.route('/')
 def index():
@@ -18,6 +12,7 @@ def index():
 
 @app.route('/compute', methods=['POST'])
 def compute():
+    # fetch enemy heroes from the request, and strip out empty inputs
     enemy_heroes = [x for x in request.form.getlist('heroes') if x != ""]
     counters = {}
     for enemy_hero in enemy_heroes:
@@ -25,18 +20,16 @@ def compute():
     total_counters = {}
     for enemy_hero in enemy_heroes:
         total_counters = d_sum(total_counters, counters[enemy_hero])  # now add the advantages
-
-
     sorted_list = []
-    for hero in sorted(total_counters, key=total_counters.get, reverse=True):
-        if hero not in enemy_heroes:# can't pick a hero if enemy already picked him!
-            col = [hero, str(total_counters[hero]) + "%"]
+    for hero in sorted(total_counters, key=total_counters.get, reverse=True):  # sort by advantages
+        if hero not in enemy_heroes:  # can't pick a hero if enemy already picked him!
+            col = [hero, str(total_counters[hero]) + "%"] # build first two columns
             for enemy_hero in enemy_heroes:
-                col.append(str(counters[enemy_hero][hero]) + "%")  # add per-hero advantage
+                col.append(str(counters[enemy_hero][hero]) + "%")  # add per-hero advantage columns
             sorted_list.append(col)
-    header = ['Hero', 'Total Advantage']
+    header = ['Hero', 'Total Advantage']  # headers for first two columns
     for enemy_hero in enemy_heroes:
-        header.append('vs. %s' % enemy_hero)
+        header.append('vs. %s' % enemy_hero)  # headers for the rest
     return render_template('results.html', x=sorted_list, header=header)
 
 
@@ -65,7 +58,7 @@ def get_counters(hero):
     return counters
 
 
-#http://stackoverflow.com/questions/877295/python-dict-add-by-valuedict-2
+# from http://stackoverflow.com/questions/877295/python-dict-add-by-valuedict-2
 def d_sum(a, b):
     d = defaultdict(int, a)
     for k, v in b.items():
@@ -74,4 +67,9 @@ def d_sum(a, b):
 
 
 def hero_name_to_url_format(name):
-    return str.lower(str(name)).replace(' ', '-').replace("'", "")
+    return str.lower(str(name)).replace(' ', '-').strip("'")
+
+
+# unused
+def create_hero_a_tag(name):
+    return '<a href="http://dotabuff.com/heroes/{0}/">{1}</a>'.format(hero_name_to_url_format(name),name)
