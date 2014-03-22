@@ -20,14 +20,16 @@
 <div id="wrap">
 <div id="main" class="grid">
     <div class="col_12 center" style="margin-top:25px;">
-        <img src="{{ url_for('static', filename='logo.png') }}" style="padding-right:10px; padding-bottom:8px;">
-        <h1 style="display: inline; ">tryhard doto</h1>
+        <img src="{{ url_for('static', filename='logo.png') }}" style="padding-right:10px; padding-bottom:0px;">
+        <h1 style="display: inline; ">Tryhard Doto</h1>
 
         <p>Suggests heroes that tend to do well against the enemy's picks. #roadto7k</p>
         <a href="javascript:void(0)" id="toggle_faq">Toggle FAQ</a>
-        <div class="col_12" id="faq" style="display:none; line-height:50%;">
+        <div class="col_12" id="faq" style="display:none; ">
             <strong>How is this different from the other counterpicking sites?</strong>
             <p>It pulls in fresh statistics from Dotabuff rather than relying on user-submitted counters.</p>
+            <strong>But how accurate is it?</strong>
+            <p>Well... it might serve for general suggestions, but don't blindly pick the top suggested heroes. It might be better than nothing but typically pub stats aren't that great of an indicator. For example, Riki is pretty high on the counters lists for a lot of heroes, but you really shouldn't be picking Riki against a decent team.</p>
             <strong>Open source?</strong>
             <p><a href="https://github.com/efskap/dota2-tryhard">Yeah.</a></p>
             </div>

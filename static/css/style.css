@@ -12,12 +12,15 @@
 /*---------------------------------
 	OVERRIDES
 -----------------------------------*/
-
+h1{
+font-family: "Arimo", sans-serif;
+}
 h4{
 color:#999;
 }
 
 div.panel{
+border-radius:5px;
 background:#fff;
 	-webkit-box-shadow:  2px 2px 5px rgba(0,0,0,0.15);
 	-moz-box-shadow:  2px 2px 5px rgba(0,0,0,0.15);
